@@ -423,6 +423,321 @@ You must replace <code>kevyapikey</code> with your personal API key.
 </tr>
 </tbody></table>
 
+<h2 id="create-contact">Create Contact</h2>
+
+<p>Create contact</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://api.kevy.co/api/contacts</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kevy.co/api/contacts"</span>
+  -H <span class="s2">"Authorization: Token kevyapitoken"</span>
+  -d <span class="s1">'{
+        "email": "john.doe@example.com",
+        "first_name": "John",
+        "last_name": "Doe",
+        "accepts_emails" true,
+        "company": "",
+        "phone": "(555) 555-5555"
+        "address_one": "969 Market",
+        "address_two": "",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94103",
+        "country": "US"
+    }
+}'</span>
+</code></pre>
+<h2 id="list-contacts">List Contacts</h2>
+
+<p>Retrieve list of contacts</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://api.kevy.co/api/contacts</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>per_page</td>
+<td>integer</td>
+<td>Current page of the collection. Default is 1.</td>
+</tr>
+<tr>
+<td>page</td>
+<td>integer</td>
+<td>Maximum number of items to be returned in result set. Default is 10.</td>
+</tr>
+</tbody></table>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kevy.co/api/contacts"</span>
+  -H <span class="s2">"Authorization: Token kevyapitoken"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="err">contacts</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="err">ABC</span><span class="mi">351586</span><span class="s2">",
+      "</span><span class="err">email</span><span class="s2">": "</span><span class="err">john.doe@example.com</span><span class="s2">",
+      "</span><span class="err">first_name</span><span class="s2">": "</span><span class="err">John</span><span class="s2">",
+      "</span><span class="err">last_name</span><span class="s2">": "</span><span class="err">Doe</span><span class="s2">",
+      "</span><span class="err">accepts_emails</span><span class="s2">" true,
+      "</span><span class="err">company</span><span class="s2">": "",
+      "</span><span class="err">phone</span><span class="s2">": "</span><span class="err">(</span><span class="mi">555</span><span class="err">)</span><span class="w"> </span><span class="mi">555-5555</span><span class="s2">"
+      "</span><span class="err">address_one</span><span class="s2">": "</span><span class="mi">969</span><span class="w"> </span><span class="err">Market</span><span class="s2">",
+      "</span><span class="err">address_two</span><span class="s2">": "",
+      "</span><span class="err">city</span><span class="s2">": "</span><span class="err">San</span><span class="w"> </span><span class="err">Francisco</span><span class="s2">",
+      "</span><span class="err">state</span><span class="s2">": "</span><span class="err">CA</span><span class="s2">",
+      "</span><span class="err">zip</span><span class="s2">": "</span><span class="mi">94103</span><span class="s2">",
+      "</span><span class="err">country</span><span class="s2">": "</span><span class="err">US</span><span class="s2">"
+    }
+  ]
+}
+</span></code></pre>
+<h1 id="form-handlers">Form Handlers</h1>
+
+<h2 id="form-handler-properties">Form Handler Properties</h2>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Form handler&rsquo;s name.</td>
+</tr>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>Form handler&rsquo;s token.</td>
+</tr>
+</tbody></table>
+
+<h2 id="list-form-handlers">List Form Handlers</h2>
+
+<p>Retrieve list of form handlers</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://api.kevy.co/api/form_handlers</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>per_page</td>
+<td>integer</td>
+<td>Current page of the collection. Default is 1.</td>
+</tr>
+<tr>
+<td>page</td>
+<td>integer</td>
+<td>Maximum number of items to be returned in result set. Default is 10.</td>
+</tr>
+</tbody></table>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kevy.co/api/form_handlers"</span>
+  -H <span class="s2">"Authorization: Token kevyapitoken"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="err">form_handlers</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Newsletter Form"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"afnab"</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Footer Form"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xhujn"</span><span class="p">,</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h2 id="submit-contact">Submit Contact</h2>
+
+<p>Send form submission data to Kevy form handler</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://api.kevy.co/api/form_handlers</code></p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kevy.co/api/form_handlers"</span>
+  -H <span class="s2">"Authorization: Token kevyapitoken"</span>
+  -d <span class="s1">'
+    {
+      "token": ABC351586",
+      "email": "john.doe@example.com",
+      "first_name": "John",
+      "last_name": "Doe",
+      "accepts_emails" true,
+      "company": "",
+      "phone": "(555) 555-5555"
+      "address_one": "969 Market",
+      "address_two": "",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip": "94103",
+      "country": "US"
+    }
+}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
+</span></code></pre>
+<h1 id="list">List</h1>
+
+<h2 id="list-properties">List Properties</h2>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>List&rsquo;s name.</td>
+</tr>
+<tr>
+<td>public_name</td>
+<td>string</td>
+<td>List&rsquo;s public name.</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>List&rsquo;s description.</td>
+</tr>
+<tr>
+<td>list_type</td>
+<td>string</td>
+<td>List&rsquo;s type.</td>
+</tr>
+<tr>
+<td>match_type</td>
+<td>string</td>
+<td>List&rsquo;s match type.</td>
+</tr>
+<tr>
+<td>is_active</td>
+<td>boolean</td>
+<td>Whether list is active.</td>
+</tr>
+<tr>
+<td>is_show_publicly</td>
+<td>boolean</td>
+<td>Whether list should be shown publicly.</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>The date the list was created.</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>datetime</td>
+<td>The date the list was updated.</td>
+</tr>
+<tr>
+<td>is_master_list</td>
+<td>boolean</td>
+<td>Whether list is Master List.</td>
+</tr>
+</tbody></table>
+
+<h2 id="create-lists">Create Lists</h2>
+
+<p>This API helps you to create lists.</p>
+
+<h2 id="list-lists">List Lists</h2>
+
+<p>Retrieve list of lists</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://api.kevy.co/api/lists</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>per_page</td>
+<td>integer</td>
+<td>Current page of the collection. Default is 1.</td>
+</tr>
+<tr>
+<td>page</td>
+<td>integer</td>
+<td>Maximum number of items to be returned in result set. Default is 10.</td>
+</tr>
+</tbody></table>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kevy.co/api/lists"</span>
+  -H <span class="s2">"Authorization: Token kevyapitoken"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="err">lists</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Master List"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"public_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Master List"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your master list"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"list_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"match_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_show_publicly"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-21T16:54:51"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-21T19:54:51"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_master_list"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Newsletter List"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"public_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Newsletter List"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your newsletter list"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"list_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dynamic"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"match_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_show_publicly"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-22T11:54:51"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-22T15:54:51"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"is_master_list"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <h1 id="orders">Orders</h1>
 
 <p>The order API allows you to create batch orders.</p>
@@ -567,30 +882,50 @@ You must replace <code>kevyapikey</code> with your personal API key.
 <h2 id="batch-create-orders">Batch Create Orders</h2>
 
 <p>This API helps you to batch create multiple orders.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://api.kevy.co/api/batch/:store_id</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>store_id</td>
+<td>integer</td>
+<td>Store ID</td>
+</tr>
+</tbody></table>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kevy.co/orders/batch/:store_id/"</span>
   -H <span class="s2">"Authorization: Token kevyapitoken"</span>
   -d <span class="s1">'{
   [
     {
-      "order_number"=&gt;"351586",
-      "total_price"=&gt;"259.00",
-      "discount"=&gt;"0.00",
-      "store_id"=&gt;"12"
+      "order_number": "351586",
+      "total_price": "259.00",
+      "discount": "0.00",
+      "store_id": "12"
       "email_address": "john.doe@example.com",
       "coupon_codes": ["WELN0615","DOGFOOD"]
       "order_date": "2017-03-22T16:28:02"
       "order_items": [
         {
-          "sku"=&gt;"3EFN",
-          "name"=&gt;"Evergreen Tree",
-          "price"=&gt;"17.00",
-          "quantity"=&gt;"1"
+          "sku": "3EFN",
+          "name": "Evergreen Tree",
+          "price": "17.00",
+          "quantity": "1"
         },
         {
-          "sku"=&gt;"3TRNS",
-          "name"=&gt;"3TRNS",
-          "price"=&gt;"0.90",
-          "quantity"=&gt;"25"
+          "sku": "3TRNS",
+          "name": "3TRNS",
+          "price": "0.90",
+          "quantity": "25"
         }
       "contact": {
         "email": "john.doe@example.com",
@@ -615,25 +950,25 @@ You must replace <code>kevyapikey</code> with your personal API key.
       }
     },
     {
-      "order_number"=&gt;"358131",
-      "total_price"=&gt;"280.00",
-      "discount"=&gt;"0.00",
-      "store_id"=&gt;"12"
+      "order_number": "358131",
+      "total_price": "280.00",
+      "discount": "0.00",
+      "store_id": "12"
       "email_address": "jane.doe@example.com",
       "coupon_codes": ["WELN0615","DOGFOOD"]
       "order_date": "2017-03-22T16:58:02"
       "order_items": [
         {
-          "sku"=&gt;"3EFN",
-          "name"=&gt;"Evergreen Tree",
-          "price"=&gt;"17.00",
-          "quantity"=&gt;"1"
+          "sku": "3EFN",
+          "name": "Evergreen Tree",
+          "price": "17.00",
+          "quantity": "1"
         },
         {
-          "sku"=&gt;"3TRNS",
-          "name"=&gt;"3TRNS",
-          "price"=&gt;"0.90",
-          "quantity"=&gt;"25"
+          "sku": "3TRNS",
+          "name": "3TRNS",
+          "price": "0.90",
+          "quantity": "25"
         }
       "contact": {
         "email": "jane.doe@example.com",
@@ -665,6 +1000,196 @@ You must replace <code>kevyapikey</code> with your personal API key.
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
 </span></code></pre>
+<h2 id="list-orders">List Orders</h2>
+
+<p>Retrieve list of orders</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://api.kevy.co/api/orders</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>per_page</td>
+<td>integer</td>
+<td>Current page of the collection. Default is 1.</td>
+</tr>
+<tr>
+<td>page</td>
+<td>integer</td>
+<td>Maximum number of items to be returned in result set. Default is 10.</td>
+</tr>
+</tbody></table>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.kevy.co/api/orders"</span>
+  -H <span class="s2">"Authorization: Token kevyapitoken"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="err">orders</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"order_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"351586"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"total_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"259.00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"store_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="w">
+      </span><span class="s2">"email_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coupon_codes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"WELN0615"</span><span class="p">,</span><span class="s2">"DOGFOOD"</span><span class="p">]</span><span class="w">
+      </span><span class="s2">"order_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-22T16:28:02"</span><span class="w">
+      </span><span class="s2">"order_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3EFN"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Evergreen Tree"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17.00"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3TRNS"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3TRNS"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.90"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="s2">"contact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@example.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accepts_emails"</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(555) 555-5555"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"contact_address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address_one"</span><span class="p">:</span><span class="w"> </span><span class="s2">"969 Market"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address_two"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Francisco"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94103"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john.doe@example.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(555) 555-5555"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"order_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"358131"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"total_price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"280.00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"store_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="w">
+      </span><span class="s2">"email_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane.doe@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"coupon_codes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"WELN0615"</span><span class="p">,</span><span class="s2">"DOGFOOD"</span><span class="p">]</span><span class="w">
+      </span><span class="s2">"order_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-22T16:58:02"</span><span class="w">
+      </span><span class="s2">"order_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3EFN"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Evergreen Tree"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17.00"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3TRNS"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3TRNS"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.90"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="s2">"contact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane.doe@example.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"accepts_emails"</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(555) 555-5555"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"contact_address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address_one"</span><span class="p">:</span><span class="w"> </span><span class="s2">"969 Market"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address_two"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Francisco"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94103"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jane.doe@example.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(555) 555-5555"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h1 id="campaigns">Campaigns</h1>
+
+<p>The  API allows you to manage campaigns.</p>
+
+<h2 id="campaign-properties">Campaign Properties</h2>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Campaign name.</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>Campaign description</td>
+</tr>
+</tbody></table>
+
+<h1 id="emails">Emails</h1>
+
+<p>The API allows you to manage emails.</p>
+
+<h2 id="email-properties">Email Properties</h2>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Email name.</td>
+</tr>
+</tbody></table>
+
+<h1 id="email-templates">Email Templates</h1>
+
+<p>The API allows you to manage email template.</p>
+
+<h2 id="email-properties">Email Properties</h2>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Email template&rsquo;s name.</td>
+</tr>
+</tbody></table>
+
           <h1 id="errors">Errors</h1>
 
 <p>The Kevy API uses the following error codes:</p>
