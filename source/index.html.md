@@ -82,6 +82,241 @@ state | string | ISO code or name of the state, province or district.
 zip | string | Postal code.
 country | string | ISO code of the country.
 
+## Create Contact
+
+Create contact
+
+### HTTP Request
+
+`POST http://api.kevy.co/api/contacts`
+
+```shell
+curl "https://api.kevy.co/api/contacts"
+  -H "Authorization: Token kevyapitoken"
+  -d '{
+        "email": "john.doe@example.com",
+        "first_name": "John",
+        "last_name": "Doe",
+        "accepts_emails" true,
+        "company": "",
+        "phone": "(555) 555-5555"
+        "address_one": "969 Market",
+        "address_two": "",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94103",
+        "country": "US"
+    }
+}'
+```
+
+## List Contacts
+
+Retrieve list of contacts
+
+### HTTP Request
+
+`GET http://api.kevy.co/api/contacts`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+per_page | integer | Current page of the collection. Default is 1.
+page | integer | Maximum number of items to be returned in result set. Default is 10.
+
+
+```shell
+curl "https://api.kevy.co/api/contacts"
+  -H "Authorization: Token kevyapitoken"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  contacts: [
+    {
+      "token": ABC351586",
+      "email": "john.doe@example.com",
+      "first_name": "John",
+      "last_name": "Doe",
+      "accepts_emails" true,
+      "company": "",
+      "phone": "(555) 555-5555"
+      "address_one": "969 Market",
+      "address_two": "",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip": "94103",
+      "country": "US"
+    }
+  ]
+}
+```
+
+# Form Handlers
+
+## Form Handler Properties
+
+Attribute | Type | Description
+--------- | ------- | -----------
+name | string | Form handler's name.
+token | string | Form handler's token.
+
+## List Form Handlers
+
+Retrieve list of form handlers
+
+### HTTP Request
+
+`GET http://api.kevy.co/api/form_handlers`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+per_page | integer | Current page of the collection. Default is 1.
+page | integer | Maximum number of items to be returned in result set. Default is 10.
+
+
+```shell
+curl "https://api.kevy.co/api/form_handlers"
+  -H "Authorization: Token kevyapitoken"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  form_handlers: [
+    {
+      "id": "1",
+      "name": "Newsletter Form",
+      "token": "afnab",
+    },
+    {
+      "id": "2",
+      "name": "Footer Form",
+      "token": "xhujn",
+    }
+  ]
+}
+```
+
+## Submit Contact
+
+Send form submission data to Kevy form handler
+
+### HTTP Request
+
+`POST http://api.kevy.co/api/form_handlers`
+
+```shell
+curl "https://api.kevy.co/api/form_handlers"
+  -H "Authorization: Token kevyapitoken"
+  -d '
+    {
+      "token": ABC351586",
+      "email": "john.doe@example.com",
+      "first_name": "John",
+      "last_name": "Doe",
+      "accepts_emails" true,
+      "company": "",
+      "phone": "(555) 555-5555"
+      "address_one": "969 Market",
+      "address_two": "",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip": "94103",
+      "country": "US"
+    }
+}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{}
+```
+
+# List
+
+## List Properties
+
+Attribute | Type | Description
+--------- | ------- | -----------
+name | string | List's name.
+public_name | string | List's public name.
+description | string | List's description.
+list_type | string | List's type.
+match_type | string | List's match type.
+is_active | boolean | Whether list is active.
+is_show_publicly | boolean | Whether list should be shown publicly.
+created_at | datetime | The date the list was created.
+updated_at | datetime | The date the list was updated.
+is_master_list | boolean | Whether list is Master List.
+
+## Create Lists
+
+This API helps you to create lists.
+
+## List Lists
+
+Retrieve list of lists
+
+### HTTP Request
+
+`GET http://api.kevy.co/api/lists`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+per_page | integer | Current page of the collection. Default is 1.
+page | integer | Maximum number of items to be returned in result set. Default is 10.
+
+
+```shell
+curl "https://api.kevy.co/api/lists"
+  -H "Authorization: Token kevyapitoken"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  lists: [
+    {
+      "id": "1",
+      "name": "Master List",
+      "public_name": "Master List",
+      "description": "Your master list",
+      "list_type": "static",
+      "match_type": "all",
+      "is_active": true,
+      "is_show_publicly": false,
+      "created_at": "2017-03-21T16:54:51",
+      "updated_at": "2017-03-21T19:54:51",
+      "is_master_list": true
+    },
+    {
+      "id": "2",
+      "name": "Newsletter List",
+      "public_name": "Newsletter List",
+      "description": "Your newsletter list",
+      "list_type": "dynamic",
+      "match_type": "all",
+      "is_active": true,
+      "is_show_publicly": true,
+      "created_at": "2017-03-22T11:54:51",
+      "updated_at": "2017-03-22T15:54:51",
+      "is_master_list": false
+    }
+  ]
+}
+```
+
 # Orders
 
 The order API allows you to create batch orders.
@@ -123,31 +358,41 @@ quantity | string | Quantity ordered.
 
 This API helps you to batch create multiple orders.
 
+### HTTP Request
+
+`POST http://api.kevy.co/api/batch/:store_id`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+store_id | integer | Store ID
+
 ```shell
 curl "https://api.kevy.co/orders/batch/:store_id/"
   -H "Authorization: Token kevyapitoken"
   -d '{
   [
     {
-      "order_number"=>"351586",
-      "total_price"=>"259.00",
-      "discount"=>"0.00",
-      "store_id"=>"12"
+      "order_number": "351586",
+      "total_price": "259.00",
+      "discount": "0.00",
+      "store_id": "12"
       "email_address": "john.doe@example.com",
       "coupon_codes": ["WELN0615","DOGFOOD"]
       "order_date": "2017-03-22T16:28:02"
       "order_items": [
         {
-          "sku"=>"3EFN",
-          "name"=>"Evergreen Tree",
-          "price"=>"17.00",
-          "quantity"=>"1"
+          "sku": "3EFN",
+          "name": "Evergreen Tree",
+          "price": "17.00",
+          "quantity": "1"
         },
         {
-          "sku"=>"3TRNS",
-          "name"=>"3TRNS",
-          "price"=>"0.90",
-          "quantity"=>"25"
+          "sku": "3TRNS",
+          "name": "3TRNS",
+          "price": "0.90",
+          "quantity": "25"
         }
       "contact": {
         "email": "john.doe@example.com",
@@ -172,25 +417,25 @@ curl "https://api.kevy.co/orders/batch/:store_id/"
       }
     },
     {
-      "order_number"=>"358131",
-      "total_price"=>"280.00",
-      "discount"=>"0.00",
-      "store_id"=>"12"
+      "order_number": "358131",
+      "total_price": "280.00",
+      "discount": "0.00",
+      "store_id": "12"
       "email_address": "jane.doe@example.com",
       "coupon_codes": ["WELN0615","DOGFOOD"]
       "order_date": "2017-03-22T16:58:02"
       "order_items": [
         {
-          "sku"=>"3EFN",
-          "name"=>"Evergreen Tree",
-          "price"=>"17.00",
-          "quantity"=>"1"
+          "sku": "3EFN",
+          "name": "Evergreen Tree",
+          "price": "17.00",
+          "quantity": "1"
         },
         {
-          "sku"=>"3TRNS",
-          "name"=>"3TRNS",
-          "price"=>"0.90",
-          "quantity"=>"25"
+          "sku": "3TRNS",
+          "name": "3TRNS",
+          "price": "0.90",
+          "quantity": "25"
         }
       "contact": {
         "email": "jane.doe@example.com",
@@ -223,3 +468,150 @@ curl "https://api.kevy.co/orders/batch/:store_id/"
 ```json
 {}
 ```
+
+## List Orders
+
+Retrieve list of orders
+
+### HTTP Request
+
+`GET http://api.kevy.co/api/orders`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+per_page | integer | Current page of the collection. Default is 1.
+page | integer | Maximum number of items to be returned in result set. Default is 10.
+
+
+```shell
+curl "https://api.kevy.co/api/orders"
+  -H "Authorization: Token kevyapitoken"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  orders: [
+    {
+      "order_number": "351586",
+      "total_price": "259.00",
+      "discount": "0.00",
+      "store_id": "12"
+      "email_address": "john.doe@example.com",
+      "coupon_codes": ["WELN0615","DOGFOOD"]
+      "order_date": "2017-03-22T16:28:02"
+      "order_items": [
+        {
+          "sku": "3EFN",
+          "name": "Evergreen Tree",
+          "price": "17.00",
+          "quantity": "1"
+        },
+        {
+          "sku": "3TRNS",
+          "name": "3TRNS",
+          "price": "0.90",
+          "quantity": "25"
+        }
+      "contact": {
+        "email": "john.doe@example.com",
+        "first_name": "John",
+        "last_name": "Doe",
+        "accepts_emails" true,
+        "company": "",
+        "phone": "(555) 555-5555"
+      },
+      "contact_address": {
+        "first_name": "John",
+        "last_name": "Doe",
+        "company": "",
+        "address_one": "969 Market",
+        "address_two": "",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94103",
+        "country": "US",
+        "email": "john.doe@example.com",
+        "phone": "(555) 555-5555"
+      }
+    },
+    {
+      "order_number": "358131",
+      "total_price": "280.00",
+      "discount": "0.00",
+      "store_id": "12"
+      "email_address": "jane.doe@example.com",
+      "coupon_codes": ["WELN0615","DOGFOOD"]
+      "order_date": "2017-03-22T16:58:02"
+      "order_items": [
+        {
+          "sku": "3EFN",
+          "name": "Evergreen Tree",
+          "price": "17.00",
+          "quantity": "1"
+        },
+        {
+          "sku": "3TRNS",
+          "name": "3TRNS",
+          "price": "0.90",
+          "quantity": "25"
+        }
+      "contact": {
+        "email": "jane.doe@example.com",
+        "first_name": "Jane",
+        "last_name": "Doe",
+        "accepts_emails" true,
+        "company": "",
+        "phone": "(555) 555-5555"
+      },
+      "contact_address": {
+        "first_name": "Jane",
+        "last_name": "Doe",
+        "company": "",
+        "address_one": "969 Market",
+        "address_two": "",
+        "city": "San Francisco",
+        "state": "CA",
+        "zip": "94103",
+        "country": "US",
+        "email": "jane.doe@example.com",
+        "phone": "(555) 555-5555"
+      }
+    }
+  ]
+}
+```
+
+# Campaigns
+
+The  API allows you to manage campaigns.
+
+## Campaign Properties
+
+Attribute | Type | Description
+--------- | ------- | -----------
+name | string | Campaign name.
+description | string | Campaign description
+
+# Emails
+
+The API allows you to manage emails.
+
+## Email Properties
+
+Attribute | Type | Description
+--------- | ------- | -----------
+name | string | Email name.
+
+# Email Templates
+
+The API allows you to manage email template.
+
+## Email Properties
+
+Attribute | Type | Description
+--------- | ------- | -----------
+name | string | Email template's name.
